@@ -15,10 +15,10 @@ serde = "1.0.127"
 #  serde = { version = "1.0.104", feature = ["derive"]}
 dotenv = "0.15.0"
 config = "0.10.1"
-# bcrypt = "0.4.0"
+# bcrypt = "0.3.0"
 # block-cipher-trait = "0.7.0"
-argon2rs = "0.2"
+bson  = "0.11" 
 [dependencies.mongodb]
 version = "2.0.0-beta.2"
 default-features = false
-features = ["sync"]
+features = ["sync"] 
