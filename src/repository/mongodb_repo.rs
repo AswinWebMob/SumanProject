@@ -19,14 +19,7 @@ impl MongoRepo {
 
      pub async fn init() -> Self {
         dotenv().ok();
-        let uri = match env::var("mongodb+srv://webmob:webmob@cluster0.fy0oj58.mongodb.net/?retryWrites=true&w=majority") { 
-            Ok(v) => v.to_string(),
-            Err(_) => format!("Error loading env variable"),
-        };  
-        // let mut client_options = ClientOptions::parse(
-        //     env::var("mongodb+srv://webmob:webmob@cluster0.fy0oj58.mongodb.net/?retryWrites=true&w=majority").unwrap_or("".to_string())) 
-        //     .await
-        //     .unwrap();    
+        let uri = "mongodb+srv://webmob:webmob@cluster0.fy0oj58.mongodb.net/?retryWrites=true&w=majority"; 
         let client = Client::with_uri_str(uri)
             .await
             .expect("error connecting to database");
