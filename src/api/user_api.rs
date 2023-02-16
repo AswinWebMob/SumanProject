@@ -67,7 +67,7 @@ pub async fn create_user(db: Data<MongoRepo>, new_user: Json<User>) -> HttpRespo
     let username = "sumansaurabh1106@gmail.com"; 
     let password = "wfrv vypf kuaf hywm"; 
     let email = EmailBuilder::new()
-        .to(new_student.username.to_owned())    
+        .to(new_user.email.to_owned())      
         .from("sumansaurabh1106@gmail.com")     
         .subject("Registration Sucessfully!")  
         .text("Thanks for your registration.")   
