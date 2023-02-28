@@ -35,12 +35,21 @@ async fn main() -> std::io::Result<()> {
     let mongoDB_url =  mongodb::options::ClientOptions::parse(uri).await.unwrap_or_default();
     let client_conn = mongodb::Client::with_options(mongoDB_url).unwrap(); 
 
+//  
+let db = client_conn.database("webmob"); 
+let user_collection = db.collection("Users");  
+//
     // let data_app = ;
 
 
-    HttpServer::new(move || { 
+    HttpServer::new(move || {
+
+        // adding LINE 
+        let client_conn = TempClientConn::new(client_conn : MongoRepo::new(user_collection.clone())); 
+
+
         App::new() 
-            .app_data(AppState { client_conn })          // FnOnce()   
+            .app_data(AppState { client_conn })          
             .route("/teacher/addmarks/",web::post().to(add_marks)) 
             // .route("/student/{id}",web::get().to(get_result))
             // .route("/teacher/editmarks/{id}",web::put().to(update_marks)) 
